@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "Run Claude Code autonomously in an isolated Docker container",
   "bin": {
-    "dangerously": "./run.sh"
+    "dangerously": "run.sh"
   },
   "files": [
     "run.sh",
