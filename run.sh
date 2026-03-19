@@ -1,5 +1,5 @@
 #!/bin/bash
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
 docker build -t claude-sandbox "$SCRIPT_DIR"
 docker run -it \
