@@ -1,0 +1,21 @@
+{
+  "name": "dangerously",
+  "version": "0.1.0",
+  "description": "Run Claude Code autonomously in an isolated Docker container",
+  "bin": {
+    "dangerously": "./run.sh"
+  },
+  "files": [
+    "run.sh",
+    "Dockerfile"
+  ],
+  "keywords": [
+    "claude",
+    "ai",
+    "agent",
+    "sandbox",
+    "docker"
+  ],
+  "author": "your name",
+  "license": "MIT"
+}
