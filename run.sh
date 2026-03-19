@@ -21,7 +21,7 @@ if [ ! -f ~/.claude.json ]; then
   exit 1
 fi
 
-SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && cd "$(readlink "$0" | xargs dirname)" && pwd)"
 
 docker build -t claude-sandbox "$SCRIPT_DIR"
 docker run -it \
