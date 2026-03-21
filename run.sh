@@ -13,7 +13,7 @@ if ! docker info &> /dev/null; then
 fi
 
 # Check Claude credentials exist
-if [ ! -f ~/.claude.json ]; then
+if [ ! -f ~/.claude.json ] || [ ! -d ~/.claude ]; then
   echo "Error: Claude credentials not found."
   echo "Install Claude Code and authenticate first:"
   echo "  npm install -g @anthropic-ai/claude-code"
@@ -23,11 +23,12 @@ fi
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && cd "$(readlink "$0" | xargs dirname)" && pwd)"
 
-docker build -t claude-sandbox "$SCRIPT_DIR"
+docker build -t agent-sandbox "$SCRIPT_DIR"
 docker run -it \
   -v $(pwd):/workspace \
-  -v ~/.claude.json:/home/claude/.claude.json \
-  claude-sandbox bash -c '
+  -v ~/.claude.json:/tmp/claude_host.json \
+  agent-sandbox bash -c '
+    cp /tmp/claude_host.json /home/claude/.claude.json
     echo "Running inside container: $HOSTNAME | User: $(whoami)"
     echo "File system changes are restricted to /workspace."
     claude --dangerously-skip-permissions
