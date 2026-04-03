@@ -1,6 +1,6 @@
 {
   "name": "dangerously",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Run Claude Code autonomously in an isolated Docker container",
   "bin": {
     "dangerously": "run.sh"
